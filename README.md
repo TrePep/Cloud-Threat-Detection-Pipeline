@@ -14,7 +14,7 @@ A real-time cloud security threat detection system that ingests logs from AWS, A
 
 ```bash
 # Clone and install
-git clone [<repository-url>](https://github.com/TrePep/Cloud-Threat-Detection-Pipeline)
+git clone https://github.com/TrePep/Cloud-Threat-Detection-Pipeline
 cd cloud-threat-detection
 python -m venv venv
 venv\Scripts\activate  
