@@ -20,7 +20,7 @@ python -m venv venv
 venv\Scripts\activate  
 pip install -r requirements.txt
 
-# Test with sample data (no credentials needed
+# Test with sample data
 python quick_test.py
 
 # Run all tests
