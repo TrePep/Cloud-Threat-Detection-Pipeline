@@ -67,11 +67,6 @@ conditions:
     value: AccessDenied
 ```
 
-## Configuration
-
-Edit `config/config.yaml`:
-
-```yaml
 
 
 
