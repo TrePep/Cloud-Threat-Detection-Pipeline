@@ -1,0 +1,195 @@
+# Example Detection Rules
+
+# Rule 1: Suspicious Root Account Activity
+id: suspicious-root-activity
+name: Suspicious Root Account Activity
+description: Detects AWS root account usage which should be rare
+severity: high
+enabled: true
+tags:
+  - aws
+  - privilege-escalation
+  - best-practice
+conditions:
+  - field: sourceProvider
+    operator: equals
+    value: aws
+  - field: actor.userType
+    operator: equals
+    value: Root
+  - field: eventName
+    operator: not_in
+    value: [GetAccountSummary, ListAccountAliases]
+
+---
+
+# Rule 2: Failed Login Attempts
+id: multiple-failed-logins
+name: Multiple Failed Login Attempts
+description: Detects potential brute force attack with multiple failed logins
+severity: high
+enabled: true
+tags:
+  - authentication
+  - brute-force
+conditions:
+  - field: eventType
+    operator: equals
+    value: authentication
+  - field: outcome
+    operator: equals
+    value: failure
+
+---
+
+# Rule 3: Unusual Geographic Access
+id: access-from-unusual-country
+name: Access From Unusual Country
+description: Detects access from countries outside normal operating regions
+severity: medium
+enabled: true
+tags:
+  - geo-location
+  - anomaly
+conditions:
+  - field: actor.geo_location.country
+    operator: not_in
+    value: [US, CA, GB, DE, FR]
+  - field: actor.geo_location.country
+    operator: exists
+    value: true
+
+---
+
+# Rule 4: Privilege Escalation Attempt
+id: privilege-escalation
+name: Privilege Escalation Attempt
+description: Detects attempts to modify IAM policies or roles
+severity: critical
+enabled: true
+tags:
+  - privilege-escalation
+  - iam
+  - aws
+conditions:
+  - field: eventName
+    operator: regex
+    value: .*(PutUserPolicy|PutRolePolicy|AttachUserPolicy|AttachRolePolicy|CreateAccessKey).*
+
+---
+
+# Rule 5: Security Group Modification
+id: security-group-modification
+name: Security Group Modification
+description: Detects changes to security groups that may expose resources
+severity: high
+enabled: true
+tags:
+  - network
+  - aws
+  - configuration-change
+conditions:
+  - field: eventName
+    operator: regex
+    value: .*(AuthorizeSecurityGroupIngress|RevokeSecurityGroupIngress).*
+  - field: sourceProvider
+    operator: equals
+    value: aws
+
+---
+
+# Rule 6: Data Exfiltration Indicator
+id: large-data-transfer
+name: Large Data Transfer
+description: Detects unusually large data transfers
+severity: high
+enabled: true
+tags:
+  - data-exfiltration
+  - network
+conditions:
+  - field: network.bytes_sent
+    operator: greater_than
+    value: 10000000000  # 10 GB
+
+---
+
+# Rule 7: Unusual Resource Deletion
+id: critical-resource-deletion
+name: Critical Resource Deletion
+description: Detects deletion of critical cloud resources
+severity: critical
+enabled: true
+tags:
+  - data-destruction
+  - sabotage
+conditions:
+  - field: eventName
+    operator: regex
+    value: .*(Delete|Terminate|Destroy).*
+  - field: eventType
+    operator: equals
+    value: configuration_change
+
+---
+
+# Rule 8: Console Login Without MFA
+id: console-login-no-mfa
+name: Console Login Without MFA
+description: Detects console logins without multi-factor authentication
+severity: medium
+enabled: true
+tags:
+  - authentication
+  - mfa
+  - aws
+conditions:
+  - field: eventName
+    operator: equals
+    value: ConsoleLogin
+  - field: request_parameters.mfaUsed
+    operator: equals
+    value: false
+  - field: outcome
+    operator: equals
+    value: success
+
+---
+
+# Rule 9: Access Key Created
+id: access-key-created
+name: Access Key Created
+description: Detects creation of new access keys which could indicate persistence
+severity: medium
+enabled: true
+tags:
+  - persistence
+  - aws
+  - credentials
+conditions:
+  - field: eventName
+    operator: equals
+    value: CreateAccessKey
+  - field: sourceProvider
+    operator: equals
+    value: aws
+
+---
+
+# Rule 10: GuardDuty High Severity Finding
+id: guardduty-high-severity
+name: GuardDuty High Severity Finding
+description: Alerts on high/critical severity GuardDuty findings
+severity: critical
+enabled: true
+tags:
+  - guardduty
+  - aws
+  - alert
+conditions:
+  - field: sourceService
+    operator: equals
+    value: guardduty
+  - field: severity
+    operator: in
+    value: [high, critical]

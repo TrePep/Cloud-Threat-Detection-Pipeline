@@ -1,0 +1,214 @@
+# Cloud Threat Detection Pipeline Configuration
+# Copy this file to config.yaml and update with your credentials
+
+# Log Ingestion Configuration
+ingestion:
+  # Polling interval in seconds
+  poll_interval: 300
+  
+  # Batch size for processing
+  batch_size: 1000
+  
+  # AWS Configuration
+  aws:
+    enabled: true
+    region: us-east-1
+    # Use IAM roles or set credentials
+    access_key_id: ${AWS_ACCESS_KEY_ID}
+    secret_access_key: ${AWS_SECRET_ACCESS_KEY}
+    
+    cloudtrail:
+      enabled: true
+      bucket_name: my-cloudtrail-bucket
+      prefix: AWSLogs/
+    
+    guardduty:
+      enabled: true
+    
+    vpc_flow_logs:
+      enabled: true
+      log_group_name: /aws/vpc/flowlogs
+  
+  # Azure Configuration
+  azure:
+    enabled: false
+    tenant_id: ${AZURE_TENANT_ID}
+    client_id: ${AZURE_CLIENT_ID}
+    client_secret: ${AZURE_CLIENT_SECRET}
+    subscription_id: ${AZURE_SUBSCRIPTION_ID}
+    
+    activity_logs:
+      enabled: true
+    
+    security_center:
+      enabled: true
+  
+  # GCP Configuration
+  gcp:
+    enabled: false
+    project_id: ${GCP_PROJECT_ID}
+    credentials_file: ${GCP_CREDENTIALS_FILE}
+    
+    audit_logs:
+      enabled: true
+    
+    cloud_logging:
+      enabled: true
+
+# Schema Normalization
+normalization:
+  # Unified timestamp format
+  timestamp_format: "%Y-%m-%dT%H:%M:%S.%fZ"
+  
+  # Field mappings
+  field_mappings:
+    enabled: true
+    strict_mode: false  # If true, reject events that don't match schema
+  
+  # Enrichment
+  enrichment:
+    geo_ip: true
+    threat_intel: true
+    asset_inventory: true
+
+# Detection Configuration
+detection:
+  # Rule-based detection
+  rules:
+    enabled: true
+    rules_directory: rules/
+    reload_interval: 600  # Reload rules every 10 minutes
+    
+  # Anomaly detection
+  anomaly:
+    enabled: true
+    model_path: models/anomaly_detector.pkl
+    
+    # Training configuration
+    training:
+      enabled: false
+      train_on_startup: false
+      training_window_days: 30
+      retrain_interval_hours: 24
+    
+    # Detection thresholds
+    thresholds:
+      isolation_forest_contamination: 0.01
+      anomaly_score_threshold: 0.8
+  
+  # Heuristic detection
+  heuristic:
+    enabled: true
+    
+    # Statistical analysis
+    statistical:
+      z_score_threshold: 3.0
+      rolling_window_hours: 24
+    
+    # Behavioral analysis
+    behavioral:
+      baseline_window_days: 7
+      deviation_threshold: 2.5
+
+# Alerting Configuration
+alerting:
+  # Alert deduplication
+  deduplication:
+    enabled: true
+    time_window_minutes: 60
+    
+  # Alert throttling
+  throttling:
+    enabled: true
+    max_alerts_per_hour: 100
+  
+  # Severity levels
+  severity_levels:
+    - critical
+    - high
+    - medium
+    - low
+    - info
+  
+  # Notification channels
+  channels:
+    # Slack
+    slack:
+      enabled: false
+      webhook_url: ${SLACK_WEBHOOK_URL}
+      channel: "#security-alerts"
+      mention_on_critical: true
+      username: "Threat Detector"
+    
+    # Email
+    email:
+      enabled: false
+      smtp_host: smtp.gmail.com
+      smtp_port: 587
+      smtp_user: ${SMTP_USER}
+      smtp_password: ${SMTP_PASSWORD}
+      from_address: alerts@example.com
+      to_addresses:
+        - security-team@example.com
+      subject_prefix: "[SECURITY ALERT]"
+    
+    # PagerDuty
+    pagerduty:
+      enabled: false
+      integration_key: ${PAGERDUTY_INTEGRATION_KEY}
+      severity_mapping:
+        critical: critical
+        high: error
+        medium: warning
+        low: info
+    
+    # Webhook
+    webhook:
+      enabled: false
+      url: ${WEBHOOK_URL}
+      method: POST
+      headers:
+        Content-Type: application/json
+        Authorization: Bearer ${WEBHOOK_TOKEN}
+
+# Storage Configuration
+storage:
+  # Database for alerts and events
+  database:
+    type: postgresql  # postgresql, sqlite, mysql
+    host: localhost
+    port: 5432
+    database: threat_detection
+    user: ${DB_USER}
+    password: ${DB_PASSWORD}
+  
+  # Data retention
+  retention:
+    events_days: 90
+    alerts_days: 365
+
+# Logging Configuration
+logging:
+  level: INFO  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: json  # json or text
+  output: file  # file, stdout, or both
+  file_path: logs/threat_detection.log
+  rotation:
+    max_bytes: 104857600  # 100MB
+    backup_count: 10
+
+# Monitoring Configuration
+monitoring:
+  prometheus:
+    enabled: false
+    port: 9090
+  
+  health_check:
+    enabled: true
+    port: 8080
+
+# Performance Configuration
+performance:
+  worker_threads: 4
+  max_queue_size: 10000
+  processing_timeout_seconds: 300
