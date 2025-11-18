@@ -1,0 +1,217 @@
+[
+  {
+    "schemaVersion": "2.0",
+    "accountId": "123456789012",
+    "region": "us-east-1",
+    "partition": "aws",
+    "id": "a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5",
+    "arn": "arn:aws:guardduty:us-east-1:123456789012:detector/a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5/finding/a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5",
+    "type": "UnauthorizedAccess:EC2/SSHBruteForce",
+    "resource": {
+      "resourceType": "Instance",
+      "instanceDetails": {
+        "instanceId": "i-0123456789abcdef0",
+        "instanceType": "t2.micro",
+        "launchTime": "2024-11-15T10:00:00.000Z",
+        "platform": "linux",
+        "productCodes": [],
+        "iamInstanceProfile": null,
+        "networkInterfaces": [
+          {
+            "ipv6Addresses": [],
+            "networkInterfaceId": "eni-0123456789abcdef0",
+            "privateDnsName": "ip-10-0-1-100.ec2.internal",
+            "privateIpAddress": "10.0.1.100",
+            "privateIpAddresses": [
+              {
+                "privateDnsName": "ip-10-0-1-100.ec2.internal",
+                "privateIpAddress": "10.0.1.100"
+              }
+            ],
+            "subnetId": "subnet-0123456789abcdef0",
+            "vpcId": "vpc-0123456789abcdef0",
+            "securityGroups": [
+              {
+                "groupName": "web-server-sg",
+                "groupId": "sg-0123456789abcdef0"
+              }
+            ],
+            "publicDnsName": "ec2-203-0-113-50.compute-1.amazonaws.com",
+            "publicIp": "203.0.113.50"
+          }
+        ],
+        "tags": [
+          {
+            "key": "Name",
+            "value": "web-server-prod"
+          },
+          {
+            "key": "Environment",
+            "value": "production"
+          }
+        ]
+      }
+    },
+    "service": {
+      "serviceName": "guardduty",
+      "detectorId": "a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5",
+      "action": {
+        "actionType": "NETWORK_CONNECTION",
+        "networkConnectionAction": {
+          "connectionDirection": "INBOUND",
+          "remoteIpDetails": {
+            "ipAddressV4": "185.220.101.42",
+            "organization": {
+              "asn": "12345",
+              "asnOrg": "Suspicious ISP",
+              "isp": "Suspicious ISP",
+              "org": "Tor Exit Node"
+            },
+            "country": {
+              "countryName": "Russia"
+            },
+            "city": {
+              "cityName": "Moscow"
+            },
+            "geoLocation": {
+              "lat": 55.7558,
+              "lon": 37.6173
+            }
+          },
+          "remotePortDetails": {
+            "port": 54321,
+            "portName": "Unknown"
+          },
+          "localPortDetails": {
+            "port": 22,
+            "portName": "SSH"
+          },
+          "protocol": "TCP",
+          "blocked": false
+        }
+      },
+      "resourceRole": "TARGET",
+      "additionalInfo": {
+        "threatListName": "ProofPoint",
+        "threatName": "Scanner"
+      },
+      "eventFirstSeen": "2024-11-16T10:00:00.000Z",
+      "eventLastSeen": "2024-11-16T10:30:00.000Z",
+      "archived": false,
+      "count": 45
+    },
+    "severity": 8,
+    "createdAt": "2024-11-16T10:00:00.000Z",
+    "updatedAt": "2024-11-16T10:30:00.000Z",
+    "title": "203.0.113.50 is performing SSH brute force attacks against i-0123456789abcdef0.",
+    "description": "EC2 instance i-0123456789abcdef0 is being probed for SSH brute force attacks from remote host 185.220.101.42."
+  },
+  {
+    "schemaVersion": "2.0",
+    "accountId": "123456789012",
+    "region": "us-east-1",
+    "partition": "aws",
+    "id": "b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5q6",
+    "arn": "arn:aws:guardduty:us-east-1:123456789012:detector/a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5/finding/b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5q6",
+    "type": "Trojan:EC2/DNSDataExfiltration",
+    "resource": {
+      "resourceType": "Instance",
+      "instanceDetails": {
+        "instanceId": "i-9876543210fedcba0",
+        "instanceType": "m5.large",
+        "launchTime": "2024-11-10T08:00:00.000Z",
+        "platform": "linux",
+        "networkInterfaces": [
+          {
+            "privateIpAddress": "10.0.2.50",
+            "publicIp": "203.0.113.100"
+          }
+        ],
+        "tags": [
+          {
+            "key": "Name",
+            "value": "app-server"
+          }
+        ]
+      }
+    },
+    "service": {
+      "serviceName": "guardduty",
+      "detectorId": "a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5",
+      "action": {
+        "actionType": "DNS_REQUEST",
+        "dnsRequestAction": {
+          "domain": "suspicious-domain.example.com",
+          "protocol": "UDP",
+          "blocked": false
+        }
+      },
+      "resourceRole": "ACTOR",
+      "additionalInfo": {
+        "domain": "suspicious-domain.example.com",
+        "threatName": "Data Exfiltration"
+      },
+      "eventFirstSeen": "2024-11-16T14:15:00.000Z",
+      "eventLastSeen": "2024-11-16T14:45:00.000Z",
+      "archived": false,
+      "count": 120
+    },
+    "severity": 9,
+    "createdAt": "2024-11-16T14:15:00.000Z",
+    "updatedAt": "2024-11-16T14:45:00.000Z",
+    "title": "EC2 instance i-9876543210fedcba0 is querying a domain name that is associated with a known data exfiltration trojan.",
+    "description": "EC2 instance i-9876543210fedcba0 is querying a domain name associated with a known command and control server."
+  },
+  {
+    "schemaVersion": "2.0",
+    "accountId": "123456789012",
+    "region": "us-west-2",
+    "partition": "aws",
+    "id": "c2d3e4f5g6h7i8j9k0l1m2n3o4p5q6r7",
+    "arn": "arn:aws:guardduty:us-west-2:123456789012:detector/a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5/finding/c2d3e4f5g6h7i8j9k0l1m2n3o4p5q6r7",
+    "type": "UnauthorizedAccess:IAMUser/MaliciousIPCaller.Custom",
+    "resource": {
+      "resourceType": "AccessKey",
+      "accessKeyDetails": {
+        "accessKeyId": "AKIAIOSFODNN7EXAMPLE",
+        "principalId": "AIDAI23HXM2LX5EXAMPLE",
+        "userName": "compromised-user",
+        "userType": "IAMUser"
+      }
+    },
+    "service": {
+      "serviceName": "guardduty",
+      "detectorId": "a0b1c2d3e4f5g6h7i8j9k0l1m2n3o4p5",
+      "action": {
+        "actionType": "AWS_API_CALL",
+        "awsApiCallAction": {
+          "api": "DescribeInstances",
+          "serviceName": "ec2.amazonaws.com",
+          "callerType": "Remote IP",
+          "remoteIpDetails": {
+            "ipAddressV4": "192.0.2.255",
+            "organization": {
+              "asn": "54321",
+              "asnOrg": "Malicious Network",
+              "isp": "BadISP",
+              "org": "Known Threat Actor"
+            },
+            "country": {
+              "countryName": "China"
+            }
+          }
+        }
+      },
+      "resourceRole": "TARGET",
+      "eventFirstSeen": "2024-11-16T12:00:00.000Z",
+      "eventLastSeen": "2024-11-16T12:30:00.000Z",
+      "archived": false,
+      "count": 25
+    },
+    "severity": 8,
+    "createdAt": "2024-11-16T12:00:00.000Z",
+    "updatedAt": "2024-11-16T12:30:00.000Z",
+    "title": "API DescribeInstances was invoked using IAM user credentials from a malicious IP address.",
+    "description": "An API operation was invoked from an IP address that is included on a custom threat list."
+  }
+]

@@ -1,0 +1,280 @@
+[
+  {
+    "caller": "admin@contoso.com",
+    "channels": "Operation",
+    "claims": {
+      "aud": "https://management.azure.com",
+      "iss": "https://sts.windows.net/12345678-1234-1234-1234-123456789012/",
+      "iat": "1700136000",
+      "nbf": "1700136000",
+      "exp": "1700139600",
+      "name": "Admin User",
+      "upn": "admin@contoso.com"
+    },
+    "correlationId": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+    "description": "",
+    "eventDataId": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+    "eventName": {
+      "value": "EndRequest",
+      "localizedValue": "End request"
+    },
+    "category": {
+      "value": "Administrative",
+      "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2024-11-16T10:15:30.1234567Z",
+    "id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/production-rg/providers/Microsoft.Compute/virtualMachines/prod-vm-01/events/c3d4e5f6-a7b8-9012-cdef-123456789012/ticks/638367705301234567",
+    "level": "Informational",
+    "operationId": "d4e5f6a7-b8c9-0123-def1-234567890123",
+    "operationName": {
+      "value": "Microsoft.Compute/virtualMachines/write",
+      "localizedValue": "Create or Update Virtual Machine"
+    },
+    "resourceGroupName": "production-rg",
+    "resourceProviderName": {
+      "value": "Microsoft.Compute",
+      "localizedValue": "Microsoft Compute"
+    },
+    "resourceType": {
+      "value": "Microsoft.Compute/virtualMachines",
+      "localizedValue": "Virtual Machine"
+    },
+    "resourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/production-rg/providers/Microsoft.Compute/virtualMachines/prod-vm-01",
+    "status": {
+      "value": "Succeeded",
+      "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+      "value": "OK",
+      "localizedValue": "OK (HTTP Status Code: 200)"
+    },
+    "submissionTimestamp": "2024-11-16T10:15:35.7890123Z",
+    "subscriptionId": "12345678-1234-1234-1234-123456789012",
+    "tenantId": "87654321-4321-4321-4321-210987654321"
+  },
+  {
+    "caller": "suspicious@contoso.com",
+    "channels": "Operation",
+    "correlationId": "e5f6a7b8-c9d0-1234-efab-cdef12345678",
+    "description": "",
+    "eventDataId": "f6a7b8c9-d0e1-2345-fabc-def123456789",
+    "eventName": {
+      "value": "EndRequest",
+      "localizedValue": "End request"
+    },
+    "category": {
+      "value": "Administrative",
+      "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2024-11-16T03:22:15.5678901Z",
+    "id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/security-rg/providers/Microsoft.Network/networkSecurityGroups/prod-nsg/events/a7b8c9d0-e1f2-3456-abcd-ef1234567890/ticks/638367429355678901",
+    "level": "Warning",
+    "operationId": "b8c9d0e1-f2a3-4567-bcde-f12345678901",
+    "operationName": {
+      "value": "Microsoft.Network/networkSecurityGroups/securityRules/write",
+      "localizedValue": "Create or Update Network Security Group Rule"
+    },
+    "resourceGroupName": "security-rg",
+    "resourceProviderName": {
+      "value": "Microsoft.Network",
+      "localizedValue": "Microsoft Network"
+    },
+    "resourceType": {
+      "value": "Microsoft.Network/networkSecurityGroups/securityRules",
+      "localizedValue": "Network Security Group Rule"
+    },
+    "resourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/security-rg/providers/Microsoft.Network/networkSecurityGroups/prod-nsg/securityRules/Allow-All-Inbound",
+    "status": {
+      "value": "Succeeded",
+      "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+      "value": "OK",
+      "localizedValue": "OK (HTTP Status Code: 200)"
+    },
+    "submissionTimestamp": "2024-11-16T03:22:20.1234567Z",
+    "subscriptionId": "12345678-1234-1234-1234-123456789012",
+    "tenantId": "87654321-4321-4321-4321-210987654321",
+    "properties": {
+      "securityRule": {
+        "name": "Allow-All-Inbound",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "destinationPortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "*",
+        "access": "Allow",
+        "priority": 100,
+        "direction": "Inbound"
+      }
+    }
+  },
+  {
+    "caller": "developer@contoso.com",
+    "channels": "Operation",
+    "correlationId": "c9d0e1f2-a3b4-5678-cdef-123456789012",
+    "description": "",
+    "eventDataId": "d0e1f2a3-b4c5-6789-def1-234567890123",
+    "eventName": {
+      "value": "EndRequest",
+      "localizedValue": "End request"
+    },
+    "category": {
+      "value": "Administrative",
+      "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2024-11-16T14:30:45.9876543Z",
+    "id": "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/data-rg/providers/Microsoft.Storage/storageAccounts/prodstorage001/events/e1f2a3b4-c5d6-7890-ef12-345678901234/ticks/638367810459876543",
+    "level": "Informational",
+    "operationId": "f2a3b4c5-d6e7-8901-f123-456789012345",
+    "operationName": {
+      "value": "Microsoft.Storage/storageAccounts/delete",
+      "localizedValue": "Delete Storage Account"
+    },
+    "resourceGroupName": "data-rg",
+    "resourceProviderName": {
+      "value": "Microsoft.Storage",
+      "localizedValue": "Microsoft Storage"
+    },
+    "resourceType": {
+      "value": "Microsoft.Storage/storageAccounts",
+      "localizedValue": "Storage Account"
+    },
+    "resourceId": "/subscriptions/12345678-1234-1234-1234-123456789012/resourcegroups/data-rg/providers/Microsoft.Storage/storageAccounts/prodstorage001",
+    "status": {
+      "value": "Succeeded",
+      "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+      "value": "OK",
+      "localizedValue": "OK (HTTP Status Code: 200)"
+    },
+    "submissionTimestamp": "2024-11-16T14:30:50.5432109Z",
+    "subscriptionId": "12345678-1234-1234-1234-123456789012",
+    "tenantId": "87654321-4321-4321-4321-210987654321"
+  },
+  {
+    "caller": "attacker@external.com",
+    "channels": "Operation",
+    "correlationId": "a3b4c5d6-e7f8-9012-abc3-def456789012",
+    "description": "Multiple failed authentication attempts",
+    "eventDataId": "b4c5d6e7-f8a9-0123-bcd4-ef5678901234",
+    "eventName": {
+      "value": "SignInLogs",
+      "localizedValue": "Sign-in Logs"
+    },
+    "category": {
+      "value": "SignInLogs",
+      "localizedValue": "Sign-in Logs"
+    },
+    "eventTimestamp": "2024-11-16T08:45:22.1111111Z",
+    "id": "/subscriptions/12345678-1234-1234-1234-123456789012/events/c5d6e7f8-a9b0-1234-cde5-f67890123456/ticks/638367531221111111",
+    "level": "Error",
+    "operationId": "d6e7f8a9-b0c1-2345-def6-789012345678",
+    "operationName": {
+      "value": "Sign-in activity",
+      "localizedValue": "Sign-in activity"
+    },
+    "status": {
+      "value": "Failed",
+      "localizedValue": "Failed"
+    },
+    "subStatus": {
+      "value": "InvalidUserNameOrPassword",
+      "localizedValue": "Invalid username or password"
+    },
+    "submissionTimestamp": "2024-11-16T08:45:27.2222222Z",
+    "subscriptionId": "12345678-1234-1234-1234-123456789012",
+    "tenantId": "87654321-4321-4321-4321-210987654321",
+    "properties": {
+      "ipAddress": "185.220.101.99",
+      "location": "RU",
+      "userPrincipalName": "attacker@external.com",
+      "failureReason": "Invalid username or password",
+      "attemptCount": 15
+    }
+  },
+  {
+    "authorization": {
+        "action": "Microsoft.Network/networkSecurityGroups/write",
+        "scope": "/subscriptions/<subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG"
+    },
+    "caller": "rob@contoso.com",
+    "channels": "Operation",
+    "claims": {
+        "aud": "https://management.core.windows.net/",
+        "iss": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "iat": "1234567890",
+        "nbf": "1234567890",
+        "exp": "1234567890",
+        "_claim_names": "{\"groups\":\"src1\"}",
+        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.microsoft.com/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
+        "http://schemas.microsoft.com/claims/authnclassreference": "1",
+        "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
+        "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+        "appid": "00001111-aaaa-2222-bbbb-3333cccc4444",
+        "appidacr": "2",
+        "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "10845a4d-ffa4-4b61-a3b4-e57b9b31cdb5",
+        "e_exp": "262800",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Robertson",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "Rob",
+        "ipaddr": "111.111.1.111",
+        "name": "Rob Robertson",
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "f409edeb-4d29-44b5-9763-ee9348ad91bb",
+        "onprem_sid": "S-1-5-21-4837261184-168309720-1886587427-18514304",
+        "puid": "18247BBD84827C6D",
+        "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "b-24Jf94A3FH2sHWVIFqO3-RSJEiv24Jnif3gj7s",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "aaaabbbb-0000-cccc-1111-dddd2222eeee",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "rob@contoso.com",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "rob@contoso.com",
+        "uti": "IdP3SUJGtkGlt7dDQVRPAA",
+        "ver": "1.0"
+    },
+    "correlationId": "aaaa0000-bb11-2222-33cc-444444dddddd",
+    "eventDataId": "aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e",
+    "eventName": {
+        "value": "EndRequest",
+        "localizedValue": "End request"
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2018-01-29T20:42:31.3810679Z",
+    "id": "/subscriptions/<subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG/events/aaaa0a0a-bb1b-cc2c-dd3d-eeeeee4e4e4e/ticks/636528553513810679",
+    "level": "Informational",
+    "operationId": "04e575f8-48d0-4c43-a8b3-78c4eb01d287",
+    "operationName": {
+        "value": "Microsoft.Network/networkSecurityGroups/write",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups/write"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Network",
+        "localizedValue": "Microsoft.Network"
+    },
+    "resourceType": {
+        "value": "Microsoft.Network/networkSecurityGroups",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups"
+    },
+    "resourceId": "/subscriptions/<subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-01-29T20:42:50.0724829Z",
+    "subscriptionId": "<subscription ID>",
+    "properties": {
+        "statusCode": "Created",
+        "serviceRequestId": "a4c11dbd-697e-47c5-9663-12362307157d",
+        "responseBody": "",
+        "requestbody": ""
+    },
+    "relatedEvents": []
+    }
+]

@@ -1,0 +1,296 @@
+[
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "admin@example.com"
+      },
+      "requestMetadata": {
+        "callerIp": "203.0.113.150",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/450.0.0",
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "compute.googleapis.com",
+      "methodName": "v1.compute.instances.insert",
+      "authorizationInfo": [
+        {
+          "resource": "projects/my-project/zones/us-central1-a/instances/prod-instance-1",
+          "permission": "compute.instances.create",
+          "granted": true,
+          "resourceAttributes": {}
+        }
+      ],
+      "resourceName": "projects/my-project/zones/us-central1-a/instances/prod-instance-1",
+      "request": {
+        "@type": "type.googleapis.com/compute.instances.insert",
+        "name": "prod-instance-1",
+        "machineType": "projects/my-project/zones/us-central1-a/machineTypes/n1-standard-1",
+        "disks": [
+          {
+            "initializeParams": {
+              "sourceImage": "projects/debian-cloud/global/images/debian-11-bullseye-v20231010"
+            },
+            "boot": true,
+            "autoDelete": true
+          }
+        ],
+        "networkInterfaces": [
+          {
+            "network": "projects/my-project/global/networks/default",
+            "accessConfigs": [
+              {
+                "name": "External NAT",
+                "type": "ONE_TO_ONE_NAT"
+              }
+            ]
+          }
+        ]
+      },
+      "response": {
+        "@type": "type.googleapis.com/operation",
+        "id": "1234567890123456789",
+        "name": "operation-1234567890123-abcdef",
+        "zone": "https://www.googleapis.com/compute/v1/projects/my-project/zones/us-central1-a",
+        "operationType": "insert",
+        "status": "RUNNING",
+        "user": "admin@example.com",
+        "progress": 0,
+        "insertTime": "2024-11-16T10:30:00.000Z",
+        "startTime": "2024-11-16T10:30:00.500Z"
+      }
+    },
+    "insertId": "abc123def456",
+    "resource": {
+      "type": "gce_instance",
+      "labels": {
+        "instance_id": "1234567890123456789",
+        "project_id": "my-project",
+        "zone": "us-central1-a"
+      }
+    },
+    "timestamp": "2024-11-16T10:30:00.123456Z",
+    "severity": "NOTICE",
+    "logName": "projects/my-project/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2024-11-16T10:30:01.234567Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "suspicious-user@example.com"
+      },
+      "requestMetadata": {
+        "callerIp": "185.220.101.88",
+        "callerSuppliedUserAgent": "curl/7.68.0",
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "iam.googleapis.com",
+      "methodName": "google.iam.admin.v1.CreateServiceAccountKey",
+      "authorizationInfo": [
+        {
+          "resource": "projects/my-project/serviceAccounts/service-account@my-project.iam.gserviceaccount.com",
+          "permission": "iam.serviceAccountKeys.create",
+          "granted": true,
+          "resourceAttributes": {}
+        }
+      ],
+      "resourceName": "projects/my-project/serviceAccounts/service-account@my-project.iam.gserviceaccount.com",
+      "request": {
+        "@type": "type.googleapis.com/google.iam.admin.v1.CreateServiceAccountKeyRequest",
+        "name": "projects/my-project/serviceAccounts/service-account@my-project.iam.gserviceaccount.com",
+        "privateKeyType": "TYPE_GOOGLE_CREDENTIALS_FILE",
+        "keyAlgorithm": "KEY_ALG_RSA_2048"
+      },
+      "response": {
+        "@type": "type.googleapis.com/google.iam.admin.v1.ServiceAccountKey",
+        "name": "projects/my-project/serviceAccounts/service-account@my-project.iam.gserviceaccount.com/keys/abcdef1234567890",
+        "privateKeyType": "TYPE_GOOGLE_CREDENTIALS_FILE",
+        "keyAlgorithm": "KEY_ALG_RSA_2048",
+        "validAfterTime": "2024-11-16T03:15:00.000Z",
+        "validBeforeTime": "2034-11-13T03:15:00.000Z"
+      }
+    },
+    "insertId": "def456ghi789",
+    "resource": {
+      "type": "service_account",
+      "labels": {
+        "project_id": "my-project",
+        "unique_id": "123456789012345678901",
+        "email_id": "service-account@my-project.iam.gserviceaccount.com"
+      }
+    },
+    "timestamp": "2024-11-16T03:15:00.987654Z",
+    "severity": "WARNING",
+    "logName": "projects/my-project/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2024-11-16T03:15:01.876543Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "developer@example.com"
+      },
+      "requestMetadata": {
+        "callerIp": "192.0.2.200",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/450.0.0",
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "compute.googleapis.com",
+      "methodName": "v1.compute.firewalls.insert",
+      "authorizationInfo": [
+        {
+          "resource": "projects/my-project/global/firewalls/allow-all-ingress",
+          "permission": "compute.firewalls.create",
+          "granted": true,
+          "resourceAttributes": {}
+        }
+      ],
+      "resourceName": "projects/my-project/global/firewalls/allow-all-ingress",
+      "request": {
+        "@type": "type.googleapis.com/compute.firewalls.insert",
+        "name": "allow-all-ingress",
+        "network": "projects/my-project/global/networks/default",
+        "direction": "INGRESS",
+        "priority": 1000,
+        "sourceRanges": [
+          "0.0.0.0/0"
+        ],
+        "allowed": [
+          {
+            "IPProtocol": "tcp",
+            "ports": [
+              "0-65535"
+            ]
+          },
+          {
+            "IPProtocol": "udp",
+            "ports": [
+              "0-65535"
+            ]
+          }
+        ]
+      },
+      "response": {
+        "@type": "type.googleapis.com/operation",
+        "id": "9876543210987654321",
+        "name": "operation-9876543210987-ghijkl",
+        "operationType": "insert",
+        "status": "RUNNING"
+      }
+    },
+    "insertId": "ghi789jkl012",
+    "resource": {
+      "type": "gce_firewall_rule",
+      "labels": {
+        "firewall_rule_id": "9876543210987654321",
+        "project_id": "my-project"
+      }
+    },
+    "timestamp": "2024-11-16T14:22:30.555555Z",
+    "severity": "WARNING",
+    "logName": "projects/my-project/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2024-11-16T14:22:31.666666Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {},
+      "authenticationInfo": {
+        "principalEmail": "ops-user@example.com"
+      },
+      "requestMetadata": {
+        "callerIp": "203.0.113.75",
+        "callerSuppliedUserAgent": "google-cloud-sdk gcloud/450.0.0",
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "compute.googleapis.com",
+      "methodName": "v1.compute.instances.delete",
+      "authorizationInfo": [
+        {
+          "resource": "projects/my-project/zones/us-central1-a/instances/prod-database-1",
+          "permission": "compute.instances.delete",
+          "granted": true,
+          "resourceAttributes": {}
+        }
+      ],
+      "resourceName": "projects/my-project/zones/us-central1-a/instances/prod-database-1",
+      "request": {
+        "@type": "type.googleapis.com/compute.instances.delete"
+      },
+      "response": {
+        "@type": "type.googleapis.com/operation",
+        "id": "5555555555555555555",
+        "name": "operation-5555555555555-mnopqr",
+        "zone": "https://www.googleapis.com/compute/v1/projects/my-project/zones/us-central1-a",
+        "operationType": "delete",
+        "status": "RUNNING",
+        "user": "ops-user@example.com",
+        "progress": 0,
+        "insertTime": "2024-11-16T16:45:00.000Z",
+        "startTime": "2024-11-16T16:45:00.500Z"
+      }
+    },
+    "insertId": "jkl012mno345",
+    "resource": {
+      "type": "gce_instance",
+      "labels": {
+        "instance_id": "5555555555555555555",
+        "project_id": "my-project",
+        "zone": "us-central1-a"
+      }
+    },
+    "timestamp": "2024-11-16T16:45:00.777777Z",
+    "severity": "NOTICE",
+    "logName": "projects/my-project/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2024-11-16T16:45:01.888888Z"
+  },
+  {
+    "protoPayload": {
+      "@type": "type.googleapis.com/google.cloud.audit.AuditLog",
+      "status": {
+        "code": 7,
+        "message": "PERMISSION_DENIED"
+      },
+      "authenticationInfo": {
+        "principalEmail": "unauthorized-user@example.com"
+      },
+      "requestMetadata": {
+        "callerIp": "198.51.100.55",
+        "callerSuppliedUserAgent": "python-requests/2.28.0",
+        "requestAttributes": {},
+        "destinationAttributes": {}
+      },
+      "serviceName": "storage.googleapis.com",
+      "methodName": "storage.buckets.get",
+      "authorizationInfo": [
+        {
+          "resource": "projects/_/buckets/sensitive-data-bucket",
+          "permission": "storage.buckets.get",
+          "granted": false,
+          "resourceAttributes": {}
+        }
+      ],
+      "resourceName": "projects/_/buckets/sensitive-data-bucket"
+    },
+    "insertId": "mno345pqr678",
+    "resource": {
+      "type": "gcs_bucket",
+      "labels": {
+        "project_id": "my-project",
+        "bucket_name": "sensitive-data-bucket",
+        "location": "us-central1"
+      }
+    },
+    "timestamp": "2024-11-16T11:20:15.333333Z",
+    "severity": "ERROR",
+    "logName": "projects/my-project/logs/cloudaudit.googleapis.com%2Factivity",
+    "receiveTimestamp": "2024-11-16T11:20:16.444444Z"
+  }
+]
